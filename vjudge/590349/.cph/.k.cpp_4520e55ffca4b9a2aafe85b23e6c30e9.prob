@@ -1,0 +1,1 @@
+{"name":"Local: k","url":"d:\\Code\\vjudge\\590349\\k.cpp","tests":[{"id":1698479072559,"input":"10 3 5\n","output":"22"},{"id":1698479079002,"input":"1000000000 314 159","output":"495273003954006262"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\vjudge\\590349\\k.cpp","group":"local","local":true}

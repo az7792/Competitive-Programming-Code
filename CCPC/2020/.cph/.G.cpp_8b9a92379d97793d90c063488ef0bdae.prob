@@ -1,0 +1,1 @@
+{"name":"Local: G","url":"d:\\Code\\CCPC\\2020\\G.cpp","tests":[{"id":1692246004029,"input":"5\nabcde\nsankaranarayanan\nabbccaabc\nprogramming\nmonotone","output":"Case #1: 1\nCase #2: 7\nCase #3: 3\nCase #4: 2\nCase #5: 3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\CCPC\\2020\\G.cpp","group":"local","local":true}

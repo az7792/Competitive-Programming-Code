@@ -1,0 +1,1 @@
+{"name":"Local: midnum","url":"d:\\Code\\midnum.cpp","tests":[{"id":1709550565057,"input":"17\nPop\nPeekMedian\nPush 3\nPeekMedian\nPush 2\nPeekMedian\nPush 1\nPeekMedian\nPop\nPop\nPush 5\nPush 4\nPeekMedian\nPop\nPop\nPop\nPop","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\midnum.cpp","group":"local","local":true}

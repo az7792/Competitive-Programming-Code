@@ -1,0 +1,1 @@
+{"name":"Local: E","url":"d:\\Code\\nowcoder\\57360\\E.cpp","tests":[{"id":1691127760484,"input":"2\n3 3\n1 2 3\n1 2 1\n1 3 1\n2 3 1\n3 3\n2 2 2\n1 2 1\n1 2 2\n1 2 3","output":"NO\nYES\nNO\nYES\nYES\nNO"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\nowcoder\\57360\\E.cpp","group":"local","local":true}

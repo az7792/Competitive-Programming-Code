@@ -1,0 +1,1 @@
+{"name":"Local: E","url":"d:\\Code\\CCPC\\2020\\E.cpp","tests":[{"id":1692251192220,"input":"3\n2\n4 9\n2\n2 3\n3\n3 9 27","output":"W\nL\nL"},{"id":1692253979776,"input":"1\n5\n1 1 1 1 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\CCPC\\2020\\E.cpp","group":"local","local":true}

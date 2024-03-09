@@ -1,0 +1,1 @@
+{"name":"Local: B","url":"d:\\Code\\nowcoder\\57363\\B.cpp","tests":[{"id":1691985766289,"input":"5\n1 2\n2 3\n6 7\n12 15\n114514 1919810","output":"3\n10\n36\n96\n104419494656"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\nowcoder\\57363\\B.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: b","url":"d:\\Code\\vjudge\\590349\\b.cpp","tests":[{"id":1698469650460,"input":"8\n6 3\nWBWWWB\n7 3\nWWBWBWW\n5 4\nBWBWB\n5 5\nBBBBB\n8 2\nBWBWBBBB\n10 2\nWBBWBBWBBW\n4 1\nBBBB\n3 2\nWWW\n","output":"2\n1\n2\n1\n4\n3\n4\n0\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\vjudge\\590349\\b.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: E_Power_of_Points","url":"d:\\Code\\Codeforces\\1857\\E_Power_of_Points.cpp","tests":[{"id":1692343379356,"input":"3\n3\n1 4 3\n5\n1 2 5 7 1\n4\n1 10 100 1000","output":"8 7 6\n16 15 18 24 16\n1111 1093 1093 2893"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\Codeforces\\1857\\E_Power_of_Points.cpp","group":"local","local":true}
