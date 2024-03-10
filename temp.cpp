@@ -10,6 +10,7 @@ int tx[] = {0, 0, 1, -1};
 int ty[] = {1, -1, 0, 0};
 void solve()
 {
+    
 }
 int main()
 {
