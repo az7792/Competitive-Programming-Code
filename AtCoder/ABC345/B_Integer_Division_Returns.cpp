@@ -10,6 +10,15 @@ int tx[] = {0, 0, 1, -1};
 int ty[] = {1, -1, 0, 0};
 void solve()
 {
+    ll x;
+    cin >> x;
+    if (x >= 0)
+        cout << (x + 9ll) / 10ll;
+    else
+    {
+        x = -x;
+        cout << -(x / 10ll);
+    }
 }
 int main()
 {

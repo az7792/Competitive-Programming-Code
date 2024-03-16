@@ -10,6 +10,25 @@ int tx[] = {0, 0, 1, -1};
 int ty[] = {1, -1, 0, 0};
 void solve()
 {
+    string str;
+    cin >> str;
+    if (str.size() < 3)
+        cout << "No";
+    else
+    {
+        if (str[0] == '<' && str.back() == '>')
+        {
+            for (int i = 1; i < str.size() - 1; ++i)
+                if (str[i] != '=')
+                {
+                    cout << "No";
+                    return;
+                }
+            cout << "Yes";
+        }
+        else
+            cout << "No";
+    }
 }
 int main()
 {

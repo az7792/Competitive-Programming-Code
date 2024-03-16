@@ -10,6 +10,23 @@ int tx[] = {0, 0, 1, -1};
 int ty[] = {1, -1, 0, 0};
 void solve()
 {
+    string str;
+    cin >> str;
+    map<char, ll> mp;
+    for (auto v : str)
+        mp[v]++;
+    ll ans = 0;
+    for (auto v : mp)
+        if (v.second >= 2)
+            ans = 1;
+    ll sum = str.size();
+    for (auto v : str)
+    {
+        mp[v]--;
+        sum--;
+        ans += sum - mp[v];
+    }
+    cout << ans;
 }
 int main()
 {
