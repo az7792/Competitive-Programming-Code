@@ -17,7 +17,7 @@ void solve()
     mp["safa"] = 1;
     cout << 1;
     cout << 1;
-    //cout << endl;
+    // cout << endl;
 
     //  cout<<endl;
     // cout<<endl;
