@@ -1,1 +1,0 @@
-{"name":"Local: text","url":"d:\\Code\\text.cpp","tests":[{"id":1700653027766,"input":"8\n1\n2\n3\n4\n5\n6\n7\n233","output":"1\n2\n4\n10\n32\n122\n544\n2770\n15872\n101042\n505521232"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\text.cpp","group":"local","local":true}

@@ -1,1 +1,0 @@
-{"name":"Local: f","url":"d:\\Code\\luogu\\138479\\f.cpp","tests":[{"id":1698115036809,"input":"3 7\n11\n45\n14","output":"4\n1\n2"},{"id":1698115043921,"input":"2 10007\n1919\n810","output":"3152\n3679"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\luogu\\138479\\f.cpp","group":"local","local":true}

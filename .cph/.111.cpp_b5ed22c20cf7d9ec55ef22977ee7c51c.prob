@@ -1,1 +1,0 @@
-{"name":"Local: 111","url":"d:\\Code\\111.cpp","tests":[{"id":1705066261130,"input":"2\n3\n1 2 2\n5\n3 5 1 5 7","output":"NO\nYES\n2\n3 4\n2 5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\111.cpp","group":"local","local":true}
