@@ -10,27 +10,35 @@ const ll MAX = 2e5 + 10;
 const ll MOD = 998244353;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
-int n;      // 数组长度[1,n]
-int D[MAX]; // 维护前缀和
-int lowbit(int x)
+struct BIT
 {
-    return x & (-x);
-}
-void add(int x, int v) // 在[x]加上v
-{
-    while (x <= n)
+    int n;        // 数组长度[1,n]
+    vector<ll> D; // 维护前缀和
+    BIT(int N)
     {
-        D[x] += v;
-        x += lowbit(x);
+        n = N;
+        D.resize(n + 1);
     }
-}
-int query(int x) // 查询[1,x]的值
-{
-    int res = 0;
-    while (x)
+    int lowbit(int x)
     {
-        res += D[x];
-        x -= lowbit(x);
+        return x & (-x);
     }
-    return res;
-}
+    void add(int x, ll v) // 在[x]加上v
+    {
+        while (x <= n)
+        {
+            D[x] += v;
+            x += lowbit(x);
+        }
+    }
+    ll query(int x) // 查询[1,x]的值
+    {
+        ll res = 0;
+        while (x)
+        {
+            res += D[x];
+            x -= lowbit(x);
+        }
+        return res;
+    }
+};
