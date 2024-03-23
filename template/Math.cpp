@@ -27,6 +27,19 @@ struct Math
         }
         return a;
     }
+    ll exgcd(ll a, ll b, ll &x, ll &y)
+    {
+        if (b == 0)
+        {
+            x = 1, y = 0;
+            return a;
+        }
+        ll res = exgcd(b, a % b, x, y);
+        ll t = x;
+        x = y;
+        y = t - (a / b) * y;
+        return res;
+    }
 
     ll lcm(ll a, ll b)
     {
@@ -63,7 +76,12 @@ struct Math
 
     bool isPrime(int x)
     {
-        return !nisp[x];
+        if (x <= 1)
+            return 0;
+        for (int i = 2; i <= x / i; ++i)
+            if (x % i == 0)
+                return 0;
+        return 1;
     }
 };
 
