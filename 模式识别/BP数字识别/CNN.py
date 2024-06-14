@@ -5,12 +5,8 @@ import os
 import struct
 import numpy as np
 from torch.utils.data import DataLoader, TensorDataset
-import tkinter as tk
-from tkinter import Canvas
-from PIL import Image, ImageDraw
-from tkinter import messagebox
+import torch.nn.functional as F
 
-# 仿照全连接网络识别手写数字方法，设计卷积神经网络进行手写数字识别，输出样本识别正确率。并将设计方法，代码，实验结果提交云班课作业。
 # 读数据
 def load_mnist(path, labelfile, datafile):
     labels_path = os.path.join(path, labelfile)
@@ -46,56 +42,56 @@ test_dataset = TensorDataset(testfeatures, testlabels)
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 
-# 定义模型
-class BPNetwork(nn.Module):
+# 定义卷积神经网络
+class CNN(nn.Module):
     def __init__(self):
-        super(BPNetwork, self).__init__()
-        # 神经网络模型结构
-        self.fc1 = nn.Linear(784, 256) 
-        self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 64)
-        self.fc4 = nn.Linear(64, 10)
-        self.dropout = nn.Dropout(0.20)  # 添加Dropout层,防止过拟合
-    
-    def forward(self, x):# 向前传播
-        x = torch.relu(self.fc1(x))
-        x = self.dropout(x)
-        x = torch.relu(self.fc2(x))
-        x = self.dropout(x)
-        x = torch.relu(self.fc3(x))
-        x = self.dropout(x)
-        x = self.fc4(x)
+        super(CNN, self).__init__()
+        self.conv1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=3, padding=1)
+        self.conv2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, padding=1)
+        self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
+        self.fc1 = nn.Linear(32 * 7 * 7, 128)
+        self.fc2 = nn.Linear(128, 10)
+
+    def forward(self, x):
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = x.view(-1, 32 * 7 * 7)
+        x = F.relu(self.fc1(x))
+        x = self.fc2(x)
         return x
 
-model = BPNetwork()
+# 实例化模型
+model = CNN()
 
-# 定义误差函数和优化器
+# 定义损失函数和优化器
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.001)  # 使用Adam优化器
+optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # 训练模型
-num_epochs = 30  # 训练轮数
+num_epochs = 5
 for epoch in range(num_epochs):
     model.train()
     running_loss = 0.0
-    for inputs, targets in train_loader:
+    for i, (inputs, labels) in enumerate(train_loader):
         optimizer.zero_grad()
-        outputs = model(inputs) # 向前传播
-        loss = criterion(outputs, targets)
-        loss.backward()  # 反向传播
-        optimizer.step()  
+        outputs = model(inputs.view(-1, 1, 28, 28))
+        loss = criterion(outputs, labels)
+        loss.backward()
+        optimizer.step()
         running_loss += loss.item()
-    print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {running_loss/len(train_loader):.4f}')
+        if (i+1) % 10 == 0:
+            print(f"第 [{epoch+1}/{num_epochs}] 轮, 第 [{i+1}/{len(train_loader)}] 步, 损失: {running_loss / 100:.4f}")
 
-# 测试模型
+# 评估模型
 model.eval()
 correct = 0
 total = 0
 with torch.no_grad():
-    for inputs, targets in test_loader:
-        outputs = model(inputs)
+    for inputs, labels in test_loader:
+        outputs = model(inputs.view(-1, 1, 28, 28))
         _, predicted = torch.max(outputs.data, 1)
-        total += targets.size(0)
-        correct += (predicted == targets).sum().item()
-print(correct,total)
-print(f'Accuracy of the model on the test images: {100 * correct / total:.2f}%')
+        total += labels.size(0)
+        correct += (predicted == labels).sum().item()
+
+accuracy = correct / total
+print(f"在测试集上的准确率: {100 * accuracy:.2f}%")
