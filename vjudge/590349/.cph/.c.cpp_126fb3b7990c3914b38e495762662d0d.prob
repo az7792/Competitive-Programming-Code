@@ -1,1 +1,0 @@
-{"name":"Local: c","url":"d:\\Code\\vjudge\\590349\\c.cpp","tests":[{"id":1698470293937,"input":"4\n1\n10\n0\n3\n100 1 100\n1 100 1\n4\n2 6 7 3\n3 6 0 5\n2\n1000000000 1000000000\n1000000000 1000000000\n","output":"10\n203\n26\n3000000000\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\vjudge\\590349\\c.cpp","group":"local","local":true}

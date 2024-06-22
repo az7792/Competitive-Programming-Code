@@ -1,1 +1,0 @@
-{"name":"Local: K","url":"d:\\Code\\CCPC\\2020\\K.cpp","tests":[{"id":1692249384842,"input":"2\n3\n1 2 3\n4 5 6\n7 8 9\n3 0 0\n0 0 0\n0 0 0\n3\n1 2 3\n4 5 6\n7 8 9\n1 0 0\n0 1 0\n0 0 0","output":"1 2 3\n4 5 6\n7 8 9\n0 0 0\n0 0 0\n0 0 0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\CCPC\\2020\\K.cpp","group":"local","local":true}
