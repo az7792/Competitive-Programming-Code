@@ -1,91 +1,58 @@
-import numpy as np
-import json
-from PIL import Image
-import matplotlib.pyplot as plt
-import torch
-import torchvision
-from torchvision import models,transforms
+import pyautogui
+import time
+from pynput import keyboard
+from pynput.mouse import Button, Controller
+import threading
 
-imgPath = 'zebra.jpeg'
-# 确认版本号 
-print("Pytorch Version: ",torch.__version__)
-print("Torchvision version: ", torchvision.__version__)
+# 确保安装 pywin32
+try:
+    import win32gui
+    import win32con
+except ImportError as e:
+    print("Error importing win32gui or win32con. Make sure you have installed pywin32 correctly.")
+    raise e
 
-# VGG16已完成训练模型的载入
-net = models.vgg16(weights=models.VGG16_Weights.IMAGENET1K_V1)
-net.eval()#设置为验证模式
+mouse = Controller()
+ok = False
 
-#输出网络结构
-print(net)
+def bring_to_foreground():
+    # 使用 pywin32 将目标窗口置于前台
+    hwnd = win32gui.FindWindow(None, "ZenlessZoneZero")  # 替换为实际窗口名称
+    if hwnd:
+        win32gui.ShowWindow(hwnd, win32con.SW_RESTORE)
+        win32gui.SetForegroundWindow(hwnd)
+        time.sleep(2)  # 等待窗口置于前台
 
-#定义图片预处理类
-class BaseTransform():
-    '''
-    调整图片尺寸，对颜色进行标准化
-    Attribute
-    ------------------------------
-    resize:调整后图像大小
-    mean:各通道颜色均值
-    std:各通道颜色方差
-    '''
-    def __init__(self,resize,mean,std):
-        self.base_transform = transforms.Compose([
-            transforms.Resize(resize),# 将图片短边映射为resize大小
-            transforms.CenterCrop(resize),
-            transforms.ToTensor(),#转化为张量
-            transforms.Normalize(mean,std)
-        ])
-    def __call__(self,img):
-        return self.base_transform(img)
-# 验证处理结果
-img = Image.open(imgPath)
-plt.imshow(img)
-plt.show()
+def on_press(key):
+    global ok
+    try:
+        print(f'Key {key} pressed')
+        if key == keyboard.Key.up:
+            ok = not ok  # 切换状态
+            if ok:
+                threading.Thread(target=mouse_clicker).start()
+    except AttributeError:
+        print(f'Special key {key} pressed')
 
-#同时显示预处理前后照片
-resize = 224
-mean=(0.485,0.456,0.406)
-std =(0.229,0.224,0.225)
-transform = BaseTransform(resize,mean,std)
-img_transformed = transform(img)#3*224*224
-#将c*h*w转变为h*w*c，将取值范围限制在0-1
-img_transformed = img_transformed.numpy().transpose((1,2,0))
-img_transformed = np.clip(img_transformed,0,1)
-plt.imshow(img_transformed)
-plt.show()
+def on_release(key):
+    print(f'Key {key} released')
+    if key == keyboard.Key.esc:
+        return False
 
+def mouse_clicker():
+    global ok
+    bring_to_foreground()  # 确保目标应用程序在前台
+    ct = 0
+    while ok:
+        mouse.position = (958, 775)
+        mouse.click(Button.left, 1)  # 左键点击一次
+        time.sleep(1)
+        mouse.position = (816, 650)
+        mouse.click(Button.left, 1)  # 左键点击一次
+        time.sleep(7)
+        ct += 1
+        print(ct)
 
-#载入标签
-ILSVRC_class_index = json.load(open('imagenet_class_index.json', 'r'))
-print(ILSVRC_class_index)
-
-class ILSVRCPredictor():
-    '''
-    根据ILSVRC数据,从模型的输出结果计算出分类标签
-    class_index: dictionary
-    '''
-    def __init__(self,class_index):
-        self.class_index = class_index
-
-    def predict_max(self,out):
-        '''
-        :paramout:net的输出结果
-        :return:预测的分类标签
-        '''
-        maxid = np.argmax(out.detach().numpy())
-        predicted_label_name = self.class_index[str(maxid)][1]
-        return predicted_label_name
-
-# 生成ILSVRCPredictor的实例
-predictor = ILSVRCPredictor(ILSVRC_class_index)
-# 读入图像
-img = Image.open(imgPath)
-# 进行预处理，添加批次尺寸维度
-transform = BaseTransform(resize,mean,std)
-img_transformed = transform(img)#已经成为张量
-input = img_transformed.unsqueeze_(0)#扩充以为一批
-
-# 将数据输入到模型中进行处理
-out = net(input)
-result = predictor.predict_max(out)
-print("预测的结果是：",result)
+# 开始监听
+with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
+    listener.join()
