@@ -10,6 +10,12 @@ int tx[] = {0, 0, 1, -1};
 int ty[] = {1, -1, 0, 0};
 void solve()
 {
+    while (1)
+    {
+        double a, b;
+        cin >> a >> b;
+        printf("%.2lf\n", a / (b * 0.87));
+    }
 }
 int main()
 {
