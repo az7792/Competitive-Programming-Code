@@ -10,6 +10,19 @@ int tx[] = {0, 0, 1, -1};
 int ty[] = {1, -1, 0, 0};
 void solve()
 {
+    string s;
+    cin >> s;
+    vector<int> a(26);
+    for (int i = 0; i < s.size(); ++i)
+        a[s[i] - 'A'] = i;
+    int ans = 0;
+    int now = a[0];
+    for (char i = 'A'; i <= 'Z'; ++i)
+    {
+        ans += abs(a[i - 'A'] - now);
+        now = a[i - 'A'];
+    }
+    cout << ans;
 }
 int main()
 {

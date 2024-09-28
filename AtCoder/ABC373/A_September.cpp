@@ -10,6 +10,15 @@ int tx[] = {0, 0, 1, -1};
 int ty[] = {1, -1, 0, 0};
 void solve()
 {
+    string s;
+    int ans = 0;
+    for (int i = 0; i < 12; ++i)
+    {
+        cin >> s;
+        if (s.size() == (i + 1))
+            ans++;
+    }
+    cout << ans;
 }
 int main()
 {
