@@ -1,13 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
 #define endl '\n'
+// leetcode--------start
+#define ll long long
 #define all(x) (x).begin(), (x).end()
 #define pii pair<int, int>
-const ll MAX = 2e5 + 10;
-const ll MOD = 1e9 + 7;
-int tx[] = {0, 0, 1, -1};
-int ty[] = {1, -1, 0, 0};
+// leetcode--------end
 void solve()
 {
 }
