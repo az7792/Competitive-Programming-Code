@@ -11,6 +11,26 @@ vector<vector<int>> make2(string strArr);
 int tx[] = {0, 0, 1, -1};
 int ty[] = {1, -1, 0, 0};
 ll MOD = 1e9 + 7;
+// ll MOD = 998244353;
+
+template <typename T>
+std::istream &operator>>(std::istream &_in, std::vector<T> &_a)
+{
+    for (auto &v : _a)
+        _in >> v;
+    return _in;
+}
+
+template <typename T>
+std::ostream &operator<<(std::ostream &_out, std::vector<T> &_a)
+{
+    if (!_a.empty())
+        _out << _a[0];
+    for (size_t i = 1; i < _a.size(); ++i)
+        _out << " " << _a[i];
+    return _out;
+}
+
 class Solution
 {
 public:
