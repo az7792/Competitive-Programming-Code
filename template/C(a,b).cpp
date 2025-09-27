@@ -38,6 +38,32 @@ struct combN
     }
 };
 
+struct combN2
+{
+    ll mod;
+    vector<vector<ll>> C;
+
+    combN2(int n, ll m) : mod(m)
+    {
+        C.assign(n + 1, vector<ll>(n + 1, 0));
+        for (int i = 0; i <= n; i++)
+        {
+            C[i][0] = C[i][i] = 1 % mod;
+            for (int j = 1; j < i; j++)
+            {
+                C[i][j] = (C[i - 1][j - 1] + C[i - 1][j]) % mod;
+            }
+        }
+    }
+
+    ll get(int n, int m)
+    {
+        if (m < 0 || m > n)
+            return 0;
+        return C[n][m];
+    }
+};
+
 void solve()
 {
     combN cc(100, 998244353);
