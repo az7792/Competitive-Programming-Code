@@ -30,7 +30,9 @@ std::ostream &operator<<(std::ostream &_out, std::vector<T> &_a)
         _out << " " << _a[i];
     return _out;
 }
-
+// 不要用function!!!
+// 不要在lambda里捕获太多变量，尤其是容器!!!
+// 会超时
 class Solution
 {
 public:
