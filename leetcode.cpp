@@ -44,14 +44,14 @@ public:
 // leetcode--------end
 void solve()
 {
-    int n = 0;
-    int k = 0;
-    int q = 0;
-    vector<int> A = make1("[1,2,3,1,2,3,1,2,3]");
-    vector<int> B = make1("");
-    vector<vector<int>> AA = make2("[[1,2],[2,5],[3,9],[1,15]]");
-    vector<vector<int>> BB = make2("");
-    Solution t;
+    [[maybe_unused]] int n = 0;
+    [[maybe_unused]] int k = 0;
+    [[maybe_unused]] int q = 0;
+    [[maybe_unused]] vector<int> A = make1("[1,2,3,1,2,3,1,2,3]");
+    [[maybe_unused]] vector<int> B = make1("");
+    [[maybe_unused]] vector<vector<int>> AA = make2("[[1,2],[2,5],[3,9],[1,15]]");
+    [[maybe_unused]] vector<vector<int>> BB = make2("");
+    [[maybe_unused]] Solution t;
     // cout << t.beautifulSplits(A);
 }
 int main()
