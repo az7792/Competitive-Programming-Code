@@ -1,9 +1,11 @@
+#ifdef LOCAL
 #include <bits/stdc++.h>
 using namespace std;
 vector<int> make1(string strArr);
 vector<vector<int>> make2(string strArr);
 #define endl '\n'
 // leetcode--------start
+#endif
 #define ll long long
 #define ull unsigned long long
 #define all(x) (x).begin(), (x).end()
@@ -36,23 +38,25 @@ std::ostream &operator<<(std::ostream &_out, std::vector<T> &_a)
 class Solution
 {
 public:
-    int beautifulSplits(vector<int> &nums)
+    long long maxScore(vector<int> &nums1, vector<int> &nums2, int k)
     {
         return 1;
     }
 };
+#ifdef LOCAL
 // leetcode--------end
 void solve()
 {
     [[maybe_unused]] int n = 0;
     [[maybe_unused]] int k = 0;
     [[maybe_unused]] int q = 0;
-    [[maybe_unused]] vector<int> A = make1("[1,2,3,1,2,3,1,2,3]");
-    [[maybe_unused]] vector<int> B = make1("");
+    [[maybe_unused]] vector<int> A = make1("[1,3,2]");
+    [[maybe_unused]] vector<int> B = make1("[4,5,1]");
     [[maybe_unused]] vector<vector<int>> AA = make2("[[1,2],[2,5],[3,9],[1,15]]");
     [[maybe_unused]] vector<vector<int>> BB = make2("");
     [[maybe_unused]] Solution t;
-    // cout << t.beautifulSplits(A);
+    // cout << t.countSubarrays(A, 4);
+    cout << t.maxScore(A, B, 2);
 }
 int main()
 {
@@ -103,3 +107,4 @@ vector<vector<int>> make2(string strArr)
     }
     return result;
 }
+#endif
